@@ -83,7 +83,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
   };
 
   return (
-    <main className="flex min-h-screen flex-col bg-paper-beige">
+    <main className="flex min-h-screen flex-col bg-[#FAF9F6] text-slate-900 font-manrope">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
@@ -91,19 +91,19 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
       <Navbar />
       
       <section className="pt-28 pb-20">
-        <div className="container mx-auto px-6 md:px-12 max-w-5xl">
+        <div className="container mx-auto px-4 sm:px-6 md:px-12 max-w-5xl">
           {/* Back link */}
-          <Link href="/collections" className="inline-flex items-center text-xs font-manrope font-bold text-charcoal/50 hover:text-coral transition-colors mb-8 uppercase tracking-widest gap-2 group">
+          <Link href="/collections" className="inline-flex items-center text-xs font-manrope font-bold text-slate-500 hover:text-amber-600 transition-colors mb-8 uppercase tracking-widest gap-2 group">
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             Back to Collection
           </Link>
 
           {/* Main Book Detail Grid */}
-          <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-6 md:p-10 border border-charcoal/10 shadow-sm grid md:grid-cols-12 gap-8 lg:gap-12 items-start">
+          <div className="bg-white rounded-3xl p-6 md:p-10 border border-stone-200 shadow-sm grid md:grid-cols-12 gap-8 lg:gap-12 items-start">
             
-            {/* Left: Compact 9:16 Book Cover */}
+            {/* Left: Compact Book Cover */}
             <div className="md:col-span-5 flex justify-center">
-              <div className="relative aspect-[9/16] w-full max-w-[300px] bg-charcoal/5 rounded-2xl overflow-hidden shadow-lg border border-charcoal/10 group">
+              <div className="relative aspect-[3/4] w-full max-w-[280px] bg-stone-100 rounded-2xl overflow-hidden shadow-lg border border-stone-200 group">
                 {book.cover_url ? (
                   <img
                     src={book.cover_url}
@@ -111,8 +111,8 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                     className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
                   />
                 ) : (
-                  <div className="w-full h-full flex flex-col items-center justify-center bg-charcoal/10 text-charcoal/30 font-newsreader text-xl italic p-6 text-center">
-                    <BookOpen className="w-8 h-8 mb-2 opacity-40" />
+                  <div className="w-full h-full flex flex-col items-center justify-center bg-stone-100 text-slate-400 font-serif text-xl italic p-6 text-center">
+                    <BookOpen className="w-8 h-8 mb-2 opacity-40 text-amber-600" />
                     <span>{book.title}</span>
                   </div>
                 )}
@@ -122,30 +122,30 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             {/* Right: Book Meta & Info */}
             <div className="md:col-span-7 space-y-6">
               <div>
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-coral/10 text-coral text-xs font-manrope font-bold uppercase tracking-widest rounded-full mb-3">
-                  <Tag className="w-3 h-3" />
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-50 text-amber-800 text-xs font-manrope font-bold uppercase tracking-widest rounded-full mb-3 border border-amber-200">
+                  <Tag className="w-3 h-3 text-amber-600" />
                   {book.category}
                 </div>
                 
-                <h1 className="text-2xl md:text-3xl lg:text-4xl font-newsreader font-bold text-charcoal leading-tight mb-2">
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-slate-900 leading-tight mb-2">
                   {book.title}
                 </h1>
                 
-                <div className="flex items-center gap-2 text-sm text-charcoal/60 font-manrope">
-                  <User className="w-4 h-4 text-coral" />
-                  <span>By <strong className="text-charcoal">{book.author}</strong></span>
+                <div className="flex items-center gap-2 text-sm text-slate-600 font-manrope">
+                  <User className="w-4 h-4 text-amber-600" />
+                  <span>By <strong className="text-slate-900">{book.author}</strong></span>
                 </div>
               </div>
 
               {/* Price & Delivery Badge */}
-              <div className="bg-paper-beige/60 p-4 rounded-2xl border border-charcoal/10 flex items-center justify-between">
+              <div className="bg-stone-50 p-4 rounded-2xl border border-stone-200 flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] font-manrope font-bold uppercase tracking-widest text-charcoal/40 block">Digital Edition</span>
-                  <span className="text-2xl font-newsreader font-bold text-coral">{book.price || "$0.50"}</span>
+                  <span className="text-[10px] font-manrope font-bold uppercase tracking-widest text-slate-400 block">Monolith Edition</span>
+                  <span className="text-2xl font-serif font-bold text-amber-700">{book.price || "$1.99"}</span>
                 </div>
                 <div className="text-right">
-                  <span className="text-xs font-manrope font-semibold text-emerald-600 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full inline-flex items-center gap-1">
-                    <Layers className="w-3 h-3" /> Instant Download
+                  <span className="text-xs font-manrope font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full inline-flex items-center gap-1">
+                    <Layers className="w-3 h-3 text-emerald-600" /> Instant EPUB Access
                   </span>
                 </div>
               </div>

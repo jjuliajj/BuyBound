@@ -20,35 +20,38 @@ export default async function CollectionsPage({ searchParams }: { searchParams: 
   const categories = Array.from(new Set(filteredBooks.map((b) => b.category)));
 
   return (
-    <main className="flex min-h-screen flex-col bg-paper-beige">
+    <main className="flex min-h-screen flex-col bg-[#FAF9F6] text-slate-900 font-manrope">
       <Navbar />
       
-      <section className="pt-32 pb-24">
-        <div className="container mx-auto px-6 md:px-12">
-          <header className="mb-24 text-center max-w-3xl mx-auto">
-            <span className="text-coral font-manrope font-bold text-xs uppercase tracking-[0.2em] mb-4 inline-block">
-              Curated Series
+      <section className="pt-28 pb-24">
+        <div className="container mx-auto px-4 sm:px-6 md:px-12 max-w-7xl space-y-12">
+          
+          {/* Header Banner */}
+          <div className="bg-white rounded-3xl p-8 md:p-12 border border-stone-200 shadow-sm text-left space-y-4">
+            <span className="text-amber-700 font-manrope font-bold text-xs uppercase tracking-widest inline-block">
+              Curated Monolith Series
             </span>
-            <h1 className="text-5xl md:text-6xl font-newsreader font-semibold text-charcoal mb-8">
-              The Signature Collections
+            <h1 className="text-4xl md:text-6xl font-serif font-bold text-slate-900 leading-tight">
+              The Signature Vault Collections
             </h1>
-            <p className="text-lg font-manrope text-charcoal/60 leading-relaxed">
-              Explore our hand-picked series, organized by literary movement and thematic resonance. Every collection is a journey.
+            <p className="text-xs sm:text-sm text-slate-600 max-w-2xl leading-relaxed font-medium">
+              Explore our hand-picked series, organized by literary movement and thematic resonance. Every collection is an archival journey.
             </p>
-          </header>
+          </div>
 
-          <div className="space-y-32">
+          <div className="space-y-16">
             {categories.map((category) => (
-              <div key={category}>
-                <div className="flex items-baseline justify-between mb-12 border-b border-charcoal/10 pb-6">
-                  <h2 className="text-3xl font-newsreader font-medium text-charcoal">
+              <div key={category} className="space-y-6">
+                <div className="flex items-baseline justify-between border-b border-stone-200 pb-4">
+                  <h2 className="text-2xl font-serif font-bold text-slate-900 flex items-center gap-2">
+                    <span className="w-2.5 h-6 bg-amber-600 rounded-sm block" />
                     {category}
                   </h2>
-                  <span className="font-manrope text-sm text-charcoal/40 uppercase tracking-widest">
+                  <span className="font-manrope text-xs font-bold text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-amber-200 uppercase">
                     {filteredBooks.filter(b => b.category === category).length} Volumes
                   </span>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-5 gap-y-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                   {filteredBooks.filter((b) => b.category === category).map((book) => (
                     <BookCard key={book.id} {...book} image={book.cover_url} description={book.description} />
                   ))}

@@ -1,17 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #1E2229;
-  --foreground: #F5F5F7;
-  --marble-gray: #E5E7EB;
+  --background: #FAF9F6;
+  --foreground: #0F172A;
+  --gold-accent: #D97706;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: #FAF9F6;
+  color: #0F172A;
   font-family: var(--font-manrope), sans-serif;
 }
 
 h1, h2, h3, .font-serif {
   font-family: var(--font-playfair), serif;
 }
+
