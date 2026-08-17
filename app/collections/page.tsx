@@ -11,15 +11,35 @@ export const metadata: Metadata = {
   description: "Browse our complete catalog of curated digital books, rare folios, and DRM-free EPUB editions from independent bookstore curators.",
 };
 
-export default async function CollectionsPage({ searchParams }: { searchParams: Promise<{ genre?: string }> }) {
-  const { genre } = await searchParams;
+export default async function CollectionsPage({ 
+  searchParams 
+}: { 
+  searchParams: Promise<{ genre?: string; category?: string; search?: string }> 
+}) {
+  const resolvedParams = await searchParams;
+  const targetCategory = resolvedParams.category || resolvedParams.genre;
+  const targetSearch = resolvedParams.search;
   const books = await getBooks();
   
-  const filteredBooks = genre 
-    ? books.filter(b => b.category.toLowerCase() === genre.toLowerCase())
-    : books;
+  let filteredBooks = books;
 
-  const categories = Array.from(new Set(books.map((b) => b.category)));
+  if (targetCategory) {
+    filteredBooks = filteredBooks.filter(b => 
+      b.category && b.category.toLowerCase() === targetCategory.toLowerCase()
+    );
+  }
+
+  if (targetSearch) {
+    const s = targetSearch.toLowerCase();
+    filteredBooks = filteredBooks.filter(b => 
+      b.title.toLowerCase().includes(s) || 
+      b.author.toLowerCase().includes(s)
+    );
+  }
+
+  const categories = Array.from(new Set(books.map((b) => b.category).filter(Boolean)));
+  const genre = targetCategory;
+
 
   return (
     <main className="flex min-h-screen flex-col bg-[#F8F9FA] text-slate-900 font-manrope">
