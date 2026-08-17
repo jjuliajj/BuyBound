@@ -34,49 +34,49 @@ export default async function AuthorsPage() {
   });
 
   return (
-    <main className="flex min-h-screen flex-col bg-[#FAF9F6] text-slate-900 font-manrope">
+    <main className="flex min-h-screen flex-col bg-[#F8F9FA] text-slate-900 font-manrope">
       <Navbar />
 
-      <section className="pt-28 pb-20">
-        <div className="container mx-auto px-4 sm:px-8 md:px-12 max-w-7xl space-y-12">
+      <section className="pt-32 sm:pt-36 pb-20">
+        <div className="container mx-auto px-4 sm:px-8 md:px-12 max-w-7xl space-y-10">
           
           {/* Header Card Container */}
-          <div className="bg-white rounded-3xl p-8 md:p-12 border border-stone-200 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-            <div className="space-y-3 max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 text-amber-800 text-xs font-bold rounded-full border border-amber-200 uppercase tracking-widest font-manrope">
-                <Users className="w-3.5 h-3.5 text-amber-600" /> Monolith Creators
+          <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-xs flex flex-col md:flex-row justify-between items-start md:items-center gap-6 text-left">
+            <div className="space-y-2 max-w-3xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-[#0A2647] text-xs font-bold rounded border border-blue-200 uppercase tracking-wider font-manrope">
+                <Users className="w-3.5 h-3.5 text-[#C92A2A]" /> Marketplace Author Directory
               </div>
-              <h1 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 leading-tight">
-                Featured <span className="text-amber-600 italic font-normal">Authors</span>
+              <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#0A2647] leading-tight">
+                Featured <span className="text-[#C92A2A]">Authors & Creators</span>
               </h1>
-              <p className="text-xs md:text-sm font-manrope text-slate-600 leading-relaxed font-medium">
-                Meet the visionary thinkers, researchers, and essayists shaping contemporary thought and literature in our archival digital library.
+              <p className="text-xs sm:text-sm font-manrope text-slate-600 leading-relaxed font-medium">
+                Meet the influential authors, philosophers, and essayists available across our independent marketplace catalog.
               </p>
             </div>
           </div>
 
           {/* Author Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {authorData.map((author) => (
               <div
                 key={author.name}
-                className="bg-white rounded-3xl p-6 border border-stone-200 shadow-xs hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group space-y-6"
+                className="bg-white rounded-xl p-5 border border-slate-200 shadow-xs hover:shadow-md hover:border-[#0A2647] transition-all flex flex-col justify-between group space-y-5 text-left"
               >
-                <div className="space-y-5">
+                <div className="space-y-4">
                   {/* Author Portrait Frame */}
-                  <div className="aspect-[4/3] rounded-2xl overflow-hidden relative border border-stone-200 shadow-sm bg-stone-100">
+                  <div className="aspect-[4/3] rounded-lg overflow-hidden relative border border-slate-200 shadow-xs bg-slate-100">
                     <img
                       src={author.avatar}
                       alt={author.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
                     
-                    <div className="absolute bottom-3 left-3 right-3 flex justify-between items-end">
-                      <span className="text-[10px] font-manrope font-bold uppercase tracking-wider text-white/95 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
+                    <div className="absolute bottom-2.5 left-2.5 right-2.5 flex justify-between items-end">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-white bg-black/60 px-2.5 py-0.5 rounded">
                         {author.category}
                       </span>
-                      <span className="text-xs font-manrope font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full shadow-sm border border-amber-200">
+                      <span className="text-xs font-bold text-[#0A2647] bg-white px-2 py-0.5 rounded shadow-xs">
                         {author.count} {author.count === 1 ? 'Book' : 'Books'}
                       </span>
                     </div>
@@ -84,25 +84,25 @@ export default async function AuthorsPage() {
 
                   {/* Author Bio Section */}
                   <div>
-                    <h2 className="font-serif text-2xl font-bold text-slate-900 group-hover:text-amber-700 transition-colors">
+                    <h2 className="font-serif text-xl font-bold text-[#0A2647] group-hover:text-[#C92A2A] transition-colors">
                       {author.name}
                     </h2>
                   </div>
 
                   {/* Published Titles List */}
-                  <div className="pt-3 border-t border-stone-100 space-y-2">
-                    <span className="text-[10px] font-manrope font-bold uppercase tracking-widest text-slate-400 block">
-                      Works in Vault ({author.count})
+                  <div className="pt-2.5 border-t border-slate-100 space-y-1.5">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 block">
+                      Marketplace Titles ({author.count})
                     </span>
                     
-                    <div className="space-y-2 max-h-40 overflow-y-auto pr-1">
+                    <div className="space-y-1.5 max-h-36 overflow-y-auto pr-1">
                       {author.books.map((book) => (
                         <Link
                           key={book.id}
                           href={`/products/${book.id}`}
-                          className="flex items-center gap-3 p-2 rounded-xl hover:bg-amber-50/60 transition-colors group/book border border-transparent hover:border-amber-200"
+                          className="flex items-center gap-2.5 p-1.5 rounded-lg hover:bg-amber-50 transition-colors group/book border border-transparent hover:border-amber-200"
                         >
-                          <div className="w-7 aspect-[3/4] bg-stone-100 rounded overflow-hidden flex-shrink-0 border border-stone-200">
+                          <div className="w-6 aspect-[3/4] bg-slate-100 rounded overflow-hidden flex-shrink-0 border border-slate-200">
                             {book.cover_url ? (
                               <img src={book.cover_url} alt={book.title} className="w-full h-full object-cover" />
                             ) : (
@@ -112,14 +112,14 @@ export default async function AuthorsPage() {
                             )}
                           </div>
                           <div className="flex-grow min-w-0">
-                            <div className="text-xs font-serif font-bold text-slate-900 truncate group-hover/book:text-amber-700 transition-colors">
+                            <div className="text-xs font-serif font-bold text-slate-900 truncate group-hover/book:text-[#C92A2A] transition-colors">
                               {book.title}
                             </div>
-                            <div className="text-[10px] font-manrope text-slate-500 font-semibold">
-                              {book.price}
+                            <div className="text-[10px] text-slate-500 font-semibold font-mono">
+                              {book.price || "$1.99"}
                             </div>
                           </div>
-                          <ArrowRight className="w-3 h-3 text-slate-400 group-hover/book:text-amber-600 group-hover/book:translate-x-0.5 transition-all flex-shrink-0" />
+                          <ArrowRight className="w-3 h-3 text-slate-400 group-hover/book:text-[#C92A2A] group-hover/book:translate-x-0.5 transition-all flex-shrink-0" />
                         </Link>
                       ))}
                     </div>
@@ -129,37 +129,37 @@ export default async function AuthorsPage() {
                 {/* Explore Author Link */}
                 <Link
                   href={`/collections?search=${encodeURIComponent(author.name)}`}
-                  className="w-full py-3 bg-slate-900 text-white hover:bg-amber-600 transition-colors rounded-full font-manrope text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 group-hover:shadow-md"
+                  className="w-full py-2.5 bg-[#0A2647] text-white hover:bg-[#C92A2A] transition-colors rounded-lg text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-xs"
                 >
-                  <span>Explore Author's Collection</span>
+                  <span>Explore Author Catalog</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             ))}
           </div>
 
-          {/* Featured Works Section */}
-          <div className="bg-white rounded-3xl p-8 border border-stone-200 shadow-sm space-y-6 pt-8">
-            <div className="flex items-center justify-between border-b border-stone-200 pb-4">
+          {/* Featured Works Section with 5-Column Grid */}
+          <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-xs space-y-6 text-left">
+            <div className="flex items-center justify-between border-b border-slate-200 pb-4">
               <div>
-                <span className="text-[10px] font-manrope font-bold uppercase tracking-[0.2em] text-amber-600">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#C92A2A]">
                   Author Spotlight
                 </span>
-                <h2 className="text-2xl font-serif font-bold text-slate-900">
-                  Recent Library Works
+                <h2 className="text-xl font-serif font-bold text-[#0A2647]">
+                  Recent Catalogue Additions
                 </h2>
               </div>
               <Link
                 href="/collections"
-                className="text-xs font-manrope font-bold text-slate-600 hover:text-amber-600 transition-colors flex items-center gap-1 uppercase tracking-wider"
+                className="text-xs font-bold text-[#C92A2A] hover:text-[#A61E1E] transition-colors flex items-center gap-1 uppercase tracking-wider"
               >
                 <span>Browse All ({books.length})</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {books.slice(0, 8).map((book) => (
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+              {books.slice(0, 10).map((book) => (
                 <BookCard
                   key={book.id}
                   id={book.id}
