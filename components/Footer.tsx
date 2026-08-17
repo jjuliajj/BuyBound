@@ -55,10 +55,9 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-xs text-slate-300">
               <li><Link href="/collections" className="hover:text-amber-400 transition-colors">All Vault Books</Link></li>
-              <li><Link href="/collections?genre=Philosophy" className="hover:text-amber-400 transition-colors">Rare & Antiquarian</Link></li>
-              <li><Link href="/collections?genre=Non-Fiction" className="hover:text-amber-400 transition-colors">Bestsellers Under $5</Link></li>
               <li><Link href="/genres" className="hover:text-amber-400 transition-colors">Category Matrix</Link></li>
               <li><Link href="/authors" className="hover:text-amber-400 transition-colors">Author Directory</Link></li>
+              <li><Link href="/about" className="hover:text-amber-400 transition-colors">About BuyBound</Link></li>
             </ul>
           </div>
 

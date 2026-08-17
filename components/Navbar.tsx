@@ -79,12 +79,11 @@ export default function Navbar() {
 
   const categories = [
     { label: "All Vault Books", href: "/collections" },
-    { label: "Rare & Collectible", href: "/collections?genre=Philosophy" },
-    { label: "Bestsellers", href: "/collections?genre=Non-Fiction" },
     { label: "Genres Matrix", href: "/genres" },
     { label: "Master Authors", href: "/authors" },
-    { label: "Atelier Heritage", href: "/about" },
+    { label: "About Us", href: "/about" },
   ];
+
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 shadow-md">
@@ -251,7 +250,7 @@ export default function Navbar() {
               key={item.label}
               href={item.href}
               className={`hover:text-[#C92A2A] transition-colors py-1 flex items-center gap-1.5 whitespace-nowrap ${
-                pathname === item.href.split('?')[0] ? "text-[#0A2647] font-black border-b-2 border-[#C92A2A]" : ""
+                pathname === item.href ? "text-[#0A2647] font-black border-b-2 border-[#C92A2A]" : ""
               }`}
             >
               <span>{item.label}</span>
